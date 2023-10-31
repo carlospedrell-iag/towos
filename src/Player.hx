@@ -1,12 +1,6 @@
 package;
 
-import flixel.animation.FlxAnimation;
-import flixel.util.FlxColor;
-import flixel.math.FlxPoint;
-import openfl.Assets;
-import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
-import flixel.group.FlxGroup;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 

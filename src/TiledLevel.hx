@@ -1,16 +1,11 @@
 package;
 
-import flixel.util.FlxColor;
-import flixel.math.FlxPoint;
-import openfl.Assets;
 import haxe.io.Path;
-import haxe.xml.Parser;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.tile.FlxTilemap;
-import flixel.addons.editors.tiled.TiledGroupLayer;
 import flixel.addons.editors.tiled.TiledObject;
 import flixel.addons.editors.tiled.TiledObjectLayer;
 import flixel.addons.editors.tiled.TiledTileSet;

@@ -2,7 +2,6 @@ package;
 
 import flash.display.BlendMode;
 import flixel.group.FlxGroup;
-// import flixel.system.FlxCollisionType;
 import Sign;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -126,10 +125,6 @@ class PlayState extends FlxState {
 		// levelTiledMap = new TiledMap("assets/tiled/level3.tmx");
 		level = new TiledLevel("assets/tiled/level3.tmx");
 
-		// Add tilemaps
-
-		// Draw coins first
-
 		_gravbase = new FlxGroup();
 		add(_gravbase);
 
@@ -176,15 +171,11 @@ class PlayState extends FlxState {
 		orbGroup = new FlxGroup();
 		add(orbGroup);
 
-		// var android_bounds = new FlxSprite(0, 0, "assets/images/android_bounds.png"); add(android_bounds); android_bounds.scrollFactor.set();
-
 		// textos
 		texto2 = new FlxText(0, 0);
 		add(texto2);
 		texto3 = new FlxText(0, 100);
 		add(texto3);
-
-		// SPWAN
 
 		// PLAYER
 		_player = new Player(0, 0);
@@ -249,7 +240,6 @@ class PlayState extends FlxState {
 		if (_fscreen) {
 			FlxG.fullscreen = !FlxG.fullscreen;
 		}
-		// if (_mini) { Lib.current.stage.stageWidth = 480;}
 
 		if (_player.y < -2000) {
 			change_color("violet");
@@ -295,8 +285,6 @@ class PlayState extends FlxState {
 		add(grass);
 		_sign = new Sign(103, 436);
 		add(_sign);
-
-		// dark = new FlxSprite(0, 0); dark.scrollFactor.set(); dark.makeGraphic(960, 540, FlxColor.BLACK); add(dark);
 	}
 
 	private function change_color(clr:String) {

@@ -6,13 +6,8 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.system.scaleModes.FixedScaleMode;
 import flixel.system.scaleModes.RatioScaleMode;
-import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
-import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
-import flixel.math.FlxMath;
-import flixel.math.FlxPoint;
-import flash.Lib;
 
 /**
  * A FlxState which can be used for the game's menu.

@@ -1,8 +1,6 @@
 package;
 
 import openfl.display.Sprite;
-import openfl.display.StageAlign;
-import openfl.display.StageScaleMode;
 import openfl.events.Event;
 import openfl.Lib;
 import flixel.FlxG;

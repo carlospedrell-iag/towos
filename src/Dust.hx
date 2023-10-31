@@ -1,8 +1,5 @@
 package ;
 import flixel.FlxSprite;
-import flixel.util.FlxSpriteUtil;
-import flixel.group.FlxGroup;
-import flixel.FlxG;
 /**
  * ...
  * @author ...
