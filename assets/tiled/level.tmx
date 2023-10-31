@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="600" tilewidth="32" tileheight="32" nextobjectid="601">
- <tileset firstgid="1" name="level" tilewidth="32" tileheight="32" tilecount="143">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="600" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="601">
+ <tileset firstgid="1" name="level" tilewidth="32" tileheight="32" tilecount="143" columns="13">
   <image source="level.png" width="416" height="352"/>
  </tileset>
- <tileset firstgid="144" name="coin" tilewidth="32" tileheight="32" tilecount="1">
-  <image source="coin.png" width="32" height="32"/>
- </tileset>
- <layer name="Background" width="30" height="600">
+ <layer id="1" name="Background" width="30" height="600">
   <properties>
    <property name="nocollide" value="true"/>
    <property name="tileset" value="level"/>
@@ -15,7 +12,7 @@
    eJztndeKFUEURRsds6Jj1j9QzGJOYM5gRFExBzBgQMEnxfTqL3saKebSjD2XqepGeq0NmwP9UmzW2TVPNbeqlFJKKaWUUkoppZRSSimllFJKkfQ5/CX8tWV+Knzmz/Cv8KHw4Zb5Pfyj4LkvwvPCO8I7W+ZE+FvBcz+GV4aPhI+2zMnw74LnNvNuCW8Nnw6fqfrLeyB8MHwtfL3qL2/KmXL3lTflTLn7ykvbZxpfWn9p+0zjS+svbZ9pfGn9pe0zjS+tv7R9pvGl9Ze2zzS+tP7S9pnGl9Zf2j7T+NL6S9tnGl9af2n7TONL6y9tn2l8af2l7TONL62/tH2m8aX1l7bPNL60/tL2mcaX1l/aPtP40vpL22caX1p/aftM40vrL22faXxp/aXtM40vrb+0fabxpfWXts80vrT+0vaZxpfWX9o+0/jS+kvbZxpfWn9p+0zjS+svbZ9pfGn9pe0zjS+tv7R9pvGl9Xfo+/wo/Dj8JPy0ZT4LPy94bq234Xfh9y3zQ+Ezk46HT7TMrnQyfKplDu3cK+GrLbMLEf8f8tnwuWrqXk4zfe/qvroRvllN3ctppu9d3c8p3/zwgpGZvneVN+VbFV49MtN38+aJus8TY8wu8k6OMeU7e1H7S8tL22fvq2HzpfWXlpe2z95Xw+ZL6y8tL22fva+GzZfWX1pe2j57Xw2bL62/tLy0ffa+GjZfWn9peWn77H01bL60/tLy0vbZ+2rYfGn9peWl7bP31bD50vpLy0vZZ99r+F5jaO817od3hXe3zAfhhwXPfBl+Vc383up1+E3Bc+s89fux5r3cnPU7s8sFzz1W/c3TvJebs859p+C5zbzbwttHZl95m+9wzFtG5jWvefNlXvOaN1/mNa9582Ve85o3X+Y1r3nzZV7zmjdf5jWvefNlXvOaN1/mNa9582Ve85o3X+Y1r3nzZV7zmjdf5jXvkPKeD1+oZv59jYvhSwXPrXUrfDd8r2XeLnxmku8Xhvt+YVN4cXhJy9xc+Mw94b3h5eEVLXNfeH/Bc+s8c8NzxpiLCp67rmrPOTrXFjy3ZjdO1nouLHju+mq8rPVcU/Bc+cpXvvmSr3zlmy/5yle++ZKvfOWbL/nKV775kq985Zsv+cpXvvmSr3zlmy/5yle++ZKvfOWbL/nKV775kq985Zsv+cpXvvmSb39802/g9M03/QaOfO1vKcmXyXdpeFnVP98N4Y2V93Mp2V9Wf1Nv++5v6m0f/U2ZZupxV3xn6rH9nb2m62960913f9Ob7j74jvM3qQu+4/xN6ut+bnLu635ucra/s9co33/1tmu+/+ptn3yn6/P/zvcP81Rd5w==
   </data>
  </layer>
- <layer name="shadows" width="30" height="600">
+ <layer id="2" name="shadows" width="30" height="600">
   <properties>
    <property name="nocollide" value="true"/>
    <property name="tileset" value="level"/>
@@ -24,7 +21,7 @@
    eJzt3VtOIzEQBdDsgy/2v8lRFCINoUkaxc9b50j8TuN62e4WmssFAAAAAAAAAICdfBz8MNaMmHumZ+74zJFmrs+zPTudM0eWz6+fR4l5dmaeZ0bsj+o6UYW6Tl3XqsR7PDGfo0rck9eZvv/NtkpcPy+/31kSHL3b976fHv7vofS6qrC+VbX43VLn/TtWzvmuqsZ0tfmY3O/OdX2diaV47+2ob/TS/v6SNzl+37Ne8a2uvQp7fpVcVpZau6urGPPeaz7zPSFlpp39vqC/SZJez3q2DzHNZr+bS+yzrHSGTDmz363yro5+quex2vofZ1Ty+n1P6Ce5bljrXHWX3mMrxhwAAFiL+0If7mPArpLn1orrSn8/eZdcV1XJZx+V47ra2ivMZ/eVLPI4T2rsU9fFTyvlusL+e7dS3JOIayZ5vRGHtvydMa2tWE8r/S7QSnpNj+jbSveuK7OwFvmuQZ7bE9PvkvdKd+E+xHEs9VtD2rxK/7+knknI3w7Segagh2qz8ejckbxHJK+Nn+Q7z7O7UlKuj2pXPfMuNVSTdwDtieM86jiHXH5X5XtAz/1ITYlBmrRvhWfu8r/VsNoGmMc7hbnS45501nlGH82XHPvKfZSaU27kub2jeFaZIVfqKZ+50d5q8UycWUexVcvtOUMCnGNe0tqr777JNZZ4dn3kfR2jjaizCr179ax/9TC0oafaMaPmSo99+voqepXTquc99uTcnq/yTFLLNxVqYOTsmh3PnuuzF9yIQ38jYiuHNY3q317/7uMeM3vPWUl6LNzJ6knOddp6XtG/VDCjnvVUe2JJb/bEfmbfh0bnUf1Y/wjJ8yppLbtIq6GdzIr97L15lNQ5eTVzPVXq5y6xfnaSGP/UubQL8T/nH7jBPtQ=
   </data>
  </layer>
- <layer name="Foreground" width="30" height="600">
+ <layer id="3" name="Foreground" width="30" height="600">
   <properties>
    <property name="tileset" value="level"/>
   </properties>
@@ -32,7 +29,7 @@
    eJzt3VFu4yAQAFCfpLHavf8Zd6uttcgl3STGgGfek6y2P3UYYDzgJF4WAAAAAAAAAABecfs61uJ3+hoR8zfndM6DoueKke0b0Z/O7dw93b7OHT2PZLf18cgx3trWHuO3vy3m0cbUDDKM66jtmpV49yfmY7SK++z9N/vrOyJivTqLrbbgfGWNvK+Zy7/p69U5cJW+ij7HI7dv9rZdZQ7M5JE+Fde2Zp9HZ8rc9t729Vz0vbsz1WL2SCzvrRX1wTXU5s3V51LLe6tXvE/77NrWWvi4n2Iovu2V8/Jq85O6e/3Yo29rNUyPOr7W5lFjedS6ZdT7N7PFWY5sZ3/9Ke8p1NalYp9D9Pun0cdz9P4bxb5obN6XOlb0vJxNWUPq17Z+iqf8FUP2fsyeMyL3f/a+PVPkcTOTUfXqds510Pkzcq8OAAD4n/K7GWmnXP9ajwFX8pmz1sU+LQAAAAAQ09udAwAAAACA15WfS6i9hz7b94r2+p7c/eFzC8As3v8cv75+jn4do1/DaJ/t/1hixiFy2/hu6+uPxv/X+JlTpPxdy1UfxcHz5H8xyGrLG++LHNKKOI4jj8VxVp2e2RVy09bvrfd+ymtc5vxgXtWJx7z2c/fePJ5lz/gZkfYnXpG9/WfJHtfs7R+lzNHqjP7EPYayzsm+ZhnFXLq+8lr0vtgjzMBeT3vZ50329mcgb7SnhjpHuddZi21Z84h9G9ZkwCM8b8ezSmmv9kzpe58d5XpuSz1v6Fee8cw1p3yOuXF2zD4Xy81k0Pv7IrbntplTx+1zFX1FXx9Gb19G+vQv9V0MtTV3+ZPXyBP91eo5/ZBHlnr+7PaV1/YZno0z6rz7OKwHXos89N0+vmfFptd5mMt+jbIu5/S954a1YZ7+c+8anDkm0ZU1wrrE6uts9/L31x7zF9oo59O6qL1asOfL2dS0tKKmsqfYQ61+j3KNtG/VX7QxdCVif67I7x+RK/uJOH6O6F3fRYy/9cJY4v+Y26DjN0p0R04=
   </data>
  </layer>
- <objectgroup color="#31a40e" name="gravity_base">
+ <objectgroup color="#31a40e" id="4" name="gravity_base">
   <object id="43" name="grav" type="gravity_base" x="576" y="17728" width="32" height="32"/>
   <object id="103" name="grav" type="gravity_base" x="608" y="17056" width="32" height="32"/>
   <object id="197" name="grav" type="gravity_base" x="608" y="15744" width="32" height="32"/>
@@ -43,7 +40,7 @@
   <object id="450" name="grav" type="gravity_base" x="416" y="7936" width="32" height="32"/>
   <object id="451" name="grav" type="gravity_base" x="448" y="2272" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#a40329" name="gravity_top">
+ <objectgroup color="#a40329" id="5" name="gravity_top">
   <object id="105" name="grav" type="gravity_top" x="576" y="17376" width="32" height="32"/>
   <object id="107" name="grav" type="gravity_top" x="608" y="16800" width="32" height="32"/>
   <object id="194" name="grav" type="gravity_top" x="608" y="15424" width="32" height="32"/>
@@ -53,7 +50,7 @@
   <object id="458" name="grav" type="gravity_top" x="544" y="7840" width="32" height="32"/>
   <object id="459" name="grav" type="gravity_top" x="416" y="6912" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#3abee2" name="gravity">
+ <objectgroup color="#3abee2" id="6" name="gravity">
   <object id="108" x="576" y="17408" width="32" height="320"/>
   <object id="109" x="608" y="16832" width="32" height="224"/>
   <object id="144" x="608" y="15456" width="32" height="288"/>
@@ -64,10 +61,10 @@
   <object id="455" x="416" y="6944" width="32" height="992"/>
   <object id="456" x="448" y="-56" width="32" height="2328"/>
  </objectgroup>
- <objectgroup color="#ffd900" name="spawn">
-  <object id="338" name="spawn" type="spawn" x="536" y="13984" width="32" height="32"/>
+ <objectgroup color="#ffd900" id="7" name="spawn">
+  <object id="338" name="spawn" type="spawn" x="47" y="19104.5" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="anitgravity">
+ <objectgroup id="8" name="anitgravity">
   <object id="61" type="antigravity" x="512" y="17408" width="32" height="320"/>
   <object id="79" type="antigravity" x="192" y="16768" width="288" height="32"/>
   <object id="83" type="antigravity" x="288" y="16936" width="32" height="352"/>
@@ -140,7 +137,7 @@
   <object id="444" type="antigravity" x="248" y="4808" width="88" height="32"/>
   <object id="452" type="antigravity" x="280" y="11400" width="688" height="32"/>
  </objectgroup>
- <objectgroup color="#9500ff" name="treadmill">
+ <objectgroup color="#9500ff" id="9" name="treadmill">
   <object id="113" type="treadmill" x="384" y="16896" width="32" height="32"/>
   <object id="114" type="treadmill" x="352" y="16896" width="32" height="32"/>
   <object id="115" type="treadmill" x="320" y="16896" width="32" height="32"/>
@@ -174,7 +171,7 @@
   <object id="403" type="treadmill" x="160" y="4832" width="32" height="32"/>
   <object id="404" type="treadmill" x="192" y="4832" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#141fff" name="treadmill2">
+ <objectgroup color="#141fff" id="10" name="treadmill2">
   <object id="123" type="treadmill2" x="320" y="16288" width="32" height="32"/>
   <object id="124" type="treadmill2" x="352" y="16288" width="32" height="32"/>
   <object id="125" type="treadmill2" x="384" y="16288" width="32" height="32"/>
@@ -236,7 +233,7 @@
   <object id="407" type="treadmill2" x="416" y="4768" width="32" height="32"/>
   <object id="408" type="treadmill2" x="448" y="4768" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#18001f" name="TOP_OBJECTS">
+ <objectgroup color="#18001f" id="11" name="TOP_OBJECTS">
   <object id="117" type="tmill_left" x="288" y="16896" width="32" height="32"/>
   <object id="118" type="tmill_right" x="384" y="16896" width="32" height="32"/>
   <object id="131" type="tmill_right" x="544" y="16288" width="32" height="32"/>
@@ -288,7 +285,7 @@
   <object id="489" type="tmill_right" x="448" y="4768" width="32" height="32"/>
   <object id="490" type="tmill_right" x="608" y="4768" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#f9f9ff" name="spike">
+ <objectgroup color="#f9f9ff" id="12" name="spike">
   <object id="89" type="spike" x="544" y="18624" width="32" height="32"/>
   <object id="502" type="spike" x="320" y="18112" width="32" height="32"/>
   <object id="503" type="spike" x="352" y="18784" width="32" height="32"/>
@@ -338,7 +335,7 @@
   <object id="549" type="spike" x="384" y="3008" width="32" height="32"/>
   <object id="552" type="spike" x="320" y="13056" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#a029a4" name="canon">
+ <objectgroup color="#a029a4" id="13" name="canon">
   <object id="168" type="canon" x="320" y="13792" width="32" height="32"/>
   <object id="169" type="canon" x="640" y="13376" width="32" height="32"/>
   <object id="170" type="canon" x="768" y="12960" width="32" height="32"/>
@@ -362,7 +359,7 @@
   <object id="357" type="canon" x="160" y="4032" width="32" height="32"/>
   <object id="445" type="canon" x="192" y="3616" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#0173ff" name="ice">
+ <objectgroup color="#0173ff" id="14" name="ice">
   <object id="238" type="ice" x="448" y="11040" width="32" height="32"/>
   <object id="239" type="ice" x="480" y="11040" width="32" height="32"/>
   <object id="240" type="ice" x="512" y="11040" width="32" height="32"/>
@@ -443,8 +440,8 @@
   <object id="500" type="ice" x="736" y="10016" width="32" height="32"/>
   <object id="501" type="ice" x="768" y="10016" width="32" height="32"/>
  </objectgroup>
- <objectgroup color="#ff8800" name="save"/>
- <objectgroup color="#19a46f" name="collide_canon">
+ <objectgroup color="#ff8800" id="15" name="save"/>
+ <objectgroup color="#19a46f" id="16" name="collide_canon">
   <object id="305" type="col_can" x="320" y="13920" width="224" height="32"/>
   <object id="308" type="col_can" x="320" y="13696" width="160" height="32"/>
   <object id="309" type="col_can" x="544" y="13792" width="96" height="32"/>

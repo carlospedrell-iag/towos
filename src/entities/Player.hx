@@ -1,8 +1,10 @@
-package;
+package entities;
 
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+
+import states.PlayState;
 
 /**
  * ...

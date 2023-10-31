@@ -1,6 +1,0 @@
-HEADER
-{
-    signature    U24
-    version      U8
-    length       U32
-}

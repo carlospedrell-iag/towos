@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -8,6 +8,10 @@ import flixel.system.scaleModes.FixedScaleMode;
 import flixel.system.scaleModes.RatioScaleMode;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+
+import states.PlayState;
+import entities.Background;
+import ui.Button;
 
 /**
  * A FlxState which can be used for the game's menu.
@@ -29,7 +33,7 @@ class MenuState extends FlxState {
 
 	override public function create():Void {
 		super.create();
-		switchStage();
+		switchToPlayState();
 		FlxG.fixedTimestep = true;
 
 		FlxG.mouse.load("assets/images/CURSOR.png");
@@ -67,8 +71,6 @@ class MenuState extends FlxState {
 			FlxTween.tween(_button, {x: 32}, 0.5);
 		}
 		// txt.text = "" + Lib.current.stage.scaleX;
-		FlxG.log.add(FlxG.mouse.x + "  " + FlxG.mouse.y);
-		FlxG.log.add("Y " + _playercam.y);
 
 		if (FlxG.keys.anyPressed(["UP"])) {
 			yes = true;
@@ -85,13 +87,13 @@ class MenuState extends FlxState {
 		}
 
 		if (Button.btnDir == "p" + 1) {
-			switchStage();
+			switchToPlayState();
 		}
 
 		super.update(elapsed);
 	}
 
-	private function switchStage():Void {
+	private function switchToPlayState():Void {
 		FlxG.switchState(new PlayState());
 	}
 }

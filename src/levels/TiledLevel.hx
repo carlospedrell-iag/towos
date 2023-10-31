@@ -1,4 +1,4 @@
-package;
+package levels;
 
 import haxe.io.Path;
 import flixel.FlxG;
@@ -12,6 +12,13 @@ import flixel.addons.editors.tiled.TiledTileSet;
 import flixel.addons.editors.tiled.TiledMap;
 import flixel.addons.editors.tiled.TiledTileLayer;
 import flixel.tile.FlxBaseTilemap;
+
+import entities.GravityBase;
+import entities.Spikes;
+import entities.Treadmill;
+import entities.Treadmill_right;
+import states.PlayState;
+
 
 class TiledLevel extends TiledMap {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image

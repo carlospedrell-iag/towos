@@ -1,4 +1,4 @@
-package;
+package ui;
 
 import flixel.FlxBasic;
 import flixel.FlxG;
@@ -18,6 +18,8 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 import flixel.input.mouse.FlxMouseEventManager;
+
+import states.PlayState;
 
 /**
  * ...

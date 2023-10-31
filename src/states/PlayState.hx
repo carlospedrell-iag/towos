@@ -1,8 +1,7 @@
-package;
+package states;
 
 import flash.display.BlendMode;
 import flixel.group.FlxGroup;
-import Sign;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -24,6 +23,12 @@ import flixel.tile.FlxTilemap;
 import flixel.input.touch.FlxTouchManager;
 import flixel.input.touch.FlxTouch;
 import openfl.Assets;
+
+import entities.Background;
+import entities.Player;
+import entities.Sign;
+import levels.TiledLevel;
+import ui.Keypad;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -110,20 +115,9 @@ class PlayState extends FlxState {
 
 		decorate();
 
-		/*
-			backmap = new FlxTilemap();
-			backmap.loadMap(Assets.getText("assets/data/backmap.csv"), "assets/images/tileset.png", 32, 32,0,1);
-			add(backmap); backmap.y -= 9484;       		
-
-
-			map = new FlxTilemap();
-			map.loadMap(Assets.getText("assets/data/map.csv"), "assets/images/tileset.png", 32, 32, 0,1,1,28);
-			add(map); map.y -= 9452; 
-		 */
-
 		// Load the level's tilemaps
-		// levelTiledMap = new TiledMap("assets/tiled/level3.tmx");
-		level = new TiledLevel("assets/tiled/level3.tmx");
+		// levelTiledMap = new TiledMap("assets/tiled/level.tmx");
+		level = new TiledLevel("assets/tiled/level.tmx");
 
 		_gravbase = new FlxGroup();
 		add(_gravbase);
@@ -180,6 +174,8 @@ class PlayState extends FlxState {
 		// PLAYER
 		_player = new Player(0, 0);
 		add(_player);
+        FlxG.watch.add(_player, "x");
+        FlxG.watch.add(_player, "y");
 		// FlxG.camera.follow(_player, FlxCameraFollowStyle.TOPDOWN, null, 10);
 		FlxG.camera.follow(_player, FlxCameraFollowStyle.TOPDOWN, 10);
 		#if mobile
@@ -227,7 +223,6 @@ class PlayState extends FlxState {
 			FlxG.fullscreen = true;
 		}
 
-		FlxG.log.add(level.tilemap.y);
 		#if !mobile
 		_gamepad = FlxG.gamepads.lastActive;
 		if (_gamepad != null) {
@@ -259,9 +254,6 @@ class PlayState extends FlxState {
 
 		// FlxG.collide(_player,map);
 		// if (FlxG.mouse.justPressed) { y = 1;  } if (y==1) { cataclysm(); }
-
-		// LOGS
-		// FlxG.log.add(_gamepad.getXAxis(XboxButtonID.LEFT_ANALOGUE_X));
 
 		super.update(elapsed);
 	}

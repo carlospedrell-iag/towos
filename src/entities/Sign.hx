@@ -1,4 +1,4 @@
-package;
+package entities;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -50,8 +50,6 @@ class Sign extends FlxGroup {
 		if (moveB) {
 			move_button();
 		}
-
-		FlxG.log.add("but " + button.y + " Ys " + Ys);
 	}
 
 	override public function draw():Void {
