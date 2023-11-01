@@ -1,6 +1,5 @@
 package levels;
 
-import flixel.util.FlxDirectionFlags;
 import haxe.io.Path;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -17,9 +16,7 @@ import flixel.tile.FlxBaseTilemap;
 import entities.GravityBase;
 import entities.Spikes;
 import entities.Treadmill;
-import entities.Treadmill_right;
 import states.PlayState;
-
 
 class TiledLevel extends TiledMap {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image
@@ -152,13 +149,13 @@ class TiledLevel extends TiledMap {
 				state._agravity.add(agrav);
 
 			case "treadmill":
-				var trdmill = new Treadmill(x, y - y_offset + 24);
+				var trdmill = new Treadmill(x, y - y_offset + 24, false);
                 FlxG.log.add("Treadmill added ");
 
 				state._treadmill.add(trdmill);
 
 			case "treadmill2":
-				var trdmill2 = new Treadmill_right(x, y - y_offset + 24);
+				var trdmill2 = new Treadmill(x, y - y_offset + 24, true);
                 FlxG.log.add("Treadmill2 added ");
 
 				state._treadmill2.add(trdmill2);

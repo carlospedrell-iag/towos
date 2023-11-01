@@ -17,7 +17,7 @@ class Player extends FlxSprite {
 	private var FRICTION:Float = 7;
 	private var GRAVITY:Float = 1260;
 	private var anim:String = "stop";
-	private var jumpcount:Int = 2; // default = 2
+	private var jumpcount:Int = 2;
 	private var dustflag:Bool = false;
 	private var pstate:PlayState;
 
@@ -31,7 +31,6 @@ class Player extends FlxSprite {
 		makeGraphic(16, 48);
 		loadGraphic("assets/images/player/spritesheet.png", true, 64, 64);
 
-		// alpha = 0.5;
 		width = 14;
 		height = 48;
 
@@ -50,7 +49,6 @@ class Player extends FlxSprite {
 
 		setupAnimation();
 
-		// PERO ESTO QUE ES?!¿?!¿!?¿!?¿!
 		pstate = cast FlxG.state;
 	}
 
@@ -76,14 +74,13 @@ class Player extends FlxSprite {
 
 		animation.play(anim);
 
-		// WHEN TOUCHING FLORR
-        //FlxG.log.add("floored: " + isTouching(FlxObject.FLOOR) );
+		// When Floored
 		if (isTouching(FlxObject.FLOOR)) {
 			if (!on_treadmill) {
 				added_speed = 0;
 			}
 			acceleration.y = GRAVITY;
-			jumpcount = 2; // SET TO 2
+			jumpcount = 2;
 		} else {
 			acceleration.y = acceleration.y + 8;
 		}

@@ -123,7 +123,6 @@ class PlayState extends FlxState {
 		decorate();
 
 		// Load the level's tilemaps
-		// levelTiledMap = new TiledMap("assets/tiled/level.tmx");
 		level = new TiledLevel("assets/tiled/level.tmx");
 
 		_gravbase = new FlxGroup();
@@ -196,8 +195,8 @@ class PlayState extends FlxState {
         FlxG.watch.add(_player, "anim");
         FlxG.watch.add(_player, "GRAVITY");
         FlxG.watch.add(_player, "FRICTION");
-		// FlxG.camera.follow(_player, FlxCameraFollowStyle.TOPDOWN, null, 10);
 		FlxG.camera.follow(_player, FlxCameraFollowStyle.TOPDOWN, 10);
+
 		#if mobile
 		var point:FlxPoint = new FlxPoint(0, 100);
 		// TODO: point is an offset that used to go in the follow() function, must find a way to add it now
@@ -241,10 +240,6 @@ class PlayState extends FlxState {
 	}
 
 	override public function update(elapsed:Float):Void {
-		// Reconocer el gamkepad
-		if (FlxG.keys.anyJustPressed(["Q"])) {
-			FlxG.fullscreen = true;
-		}
 
 		#if !mobile
 			normalControls();
@@ -267,16 +262,11 @@ class PlayState extends FlxState {
 		// COLISIONES:
 		level.collideWithLevel(_player);
 		FlxG.overlap(_gravity, _player, _player.gravitate);
-
 		FlxG.overlap(_spike, _player, _player.die);
-		// FlxG.collide(_player, _treadmill);
 		FlxG.collide(_treadmill, _player, _player.speed_up);
 		FlxG.collide(_treadmill2, _player, _player.speed_up2);
 		FlxG.collide(_ice, _player, _player.slippery);
-        
 		FlxG.overlap(_agravity, _player, _player.normalize);
-		// FlxG.collide(_player,map);
-		// if (FlxG.mouse.justPressed) { y = 1;  } if (y==1) { cataclysm(); }
 
 		super.update(elapsed);
 	}
@@ -367,8 +357,6 @@ class PlayState extends FlxState {
 
         _gamepad = FlxG.gamepads.lastActive;
 		if (_gamepad != null) {
-            // var axis:Float = _gamepad.getXAxis(XboxButtonID.LEFT_ANALOGUE_X);
-            // TODO:
             var axis:Float = _gamepad.getXAxis(FlxGamepadInputID.LEFT_ANALOG_STICK);
 
             // Comprobar si el stick está hacia la derecha o izquierda
@@ -392,7 +380,6 @@ class PlayState extends FlxState {
 		_up = _gamepad.anyJustPressed([FlxGamepadInputID.A]) || FlxG.keys.anyJustPressed(["UP"]);
 		_left = _leftaxis || FlxG.keys.anyPressed(["LEFT"]);
 		_right = _rightaxis || FlxG.keys.anyPressed(["RIGHT"]);
-
 		_fscreen = _gamepad.anyJustPressed([FlxGamepadInputID.BACK]) || FlxG.keys.anyJustPressed(["F"]);
 	}
 }

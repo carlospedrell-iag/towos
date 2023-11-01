@@ -58,8 +58,6 @@ class MenuState extends FlxState {
 
 		_button = new Button(-100, 128, "assets/images/UI/playButton.png", 84, 40, 1);
 		add(_button);
-		// _button.scrollFactor.set(0, 0.6);
-		// _button2 = new Button(100, 0, "assets/images/UI/confButton.png", 164, 40, 2); add(_button2);
 	}
 
 	override public function destroy():Void {
@@ -69,7 +67,7 @@ class MenuState extends FlxState {
 	override public function update(elapsed:Float):Void {
         var _gamepadstart: Bool = false;
 
-		if (FlxG.keys.anyJustPressed(["Q"])) {
+		if (FlxG.keys.anyJustPressed(["F"])) {
 			FlxG.fullscreen = true;
 		}
 
@@ -77,7 +75,6 @@ class MenuState extends FlxState {
 		if (_playercam.y > -50) {
 			FlxTween.tween(_button, {x: 32}, 0.5);
 		}
-		// txt.text = "" + Lib.current.stage.scaleX;
 
 		if (FlxG.keys.anyPressed(["UP"])) {
 			yes = true;

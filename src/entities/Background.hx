@@ -1,22 +1,9 @@
 package entities;
 
-import flixel.FlxBasic;
-import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.group.FlxGroup;
-import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 using flixel.util.FlxSpriteUtil;
-
-import flixel.FlxCamera;
-import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.FlxState;
-import flixel.input.touch.FlxTouch;
-import flixel.text.FlxText;
-import flixel.ui.FlxButton;
-import flixel.math.FlxMath;
 
 /**
  * ...
