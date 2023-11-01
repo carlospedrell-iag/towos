@@ -55,6 +55,7 @@ class PlayState extends FlxState {
 	public var topobjects:FlxGroup;
 
 	private var move:FlxSprite;
+	private var double_jump:FlxSprite;
 
 	private var _background:Background;
 
@@ -113,6 +114,10 @@ class PlayState extends FlxState {
 		Background.layer3.kill();
 		Background.title.kill();
 
+        Background.R = 212;
+        Background.G = 234;
+        Background.B = 234;
+
 		add(_background);
 
 		decorate();
@@ -148,7 +153,11 @@ class PlayState extends FlxState {
 		move = new FlxSprite(-6, 332);
 		move.loadGraphic("assets/images/move.png");
 		add(move);
-		move.scrollFactor.set(0, 0.6);
+
+		double_jump = new FlxSprite(500, -550);
+		double_jump.loadGraphic("assets/images/doublejump.png");
+		double_jump.scrollFactor.set(0, 0.9);
+		add(double_jump);
 
 		// Load player objects
 		level.loadObjects(this);
@@ -220,6 +229,7 @@ class PlayState extends FlxState {
 		_ice.draw();
 		_spike.draw();
 		move.draw();
+		double_jump.draw();
 		topobjects.draw();
 		#if mobile
 		_keypad.draw();
@@ -237,12 +247,7 @@ class PlayState extends FlxState {
 		}
 
 		#if !mobile
-		_gamepad = FlxG.gamepads.lastActive;
-		if (_gamepad != null) {
-			gamepadControls();
-		} else {
-			keyControls();
-		}
+			normalControls();
 		#end
 
 		if (_fscreen) {
@@ -352,52 +357,42 @@ class PlayState extends FlxState {
 		}
 	}
 
-	private function gamepadControls():Void {
+	private function normalControls():Void {
 		var MIN:Float = 0.2;
 		var MAX:Float = 0.3;
 		var minsp:Int = 70;
 		var maxsp:Int = 220;
+        var _leftaxis: Bool = false;
+        var _rightaxis: Bool = false;
 
-		// var axis:Float = _gamepad.getXAxis(XboxButtonID.LEFT_ANALOGUE_X);
-		// TODO:
-		// var axis:Float = _gamepad.getXAxis(FlxGamepadAnalogStick.);
-		var axis:Float = 0;
+        _gamepad = FlxG.gamepads.lastActive;
+		if (_gamepad != null) {
+            // var axis:Float = _gamepad.getXAxis(XboxButtonID.LEFT_ANALOGUE_X);
+            // TODO:
+            var axis:Float = _gamepad.getXAxis(FlxGamepadInputID.LEFT_ANALOG_STICK);
 
-		// botones
-		// _up = _gamepad.anyJustPressed([XboxButtonID.A]);
-		_up = _gamepad.anyJustPressed([FlxGamepadInputID.A]);
-		// _fscreen = _gamepad.justPressed(XboxButtonID.BACK);
-		_fscreen = _gamepad.anyJustPressed([FlxGamepadInputID.BACK]);
+            // Comprobar si el stick está hacia la derecha o izquierda
+            if (axis < -MIN) {
+                _leftaxis = true;
+            } else if (axis > MIN) {
+                _rightaxis = true;
+            } else {
+                _leftaxis = false;
+                _rightaxis = false;
+            }
 
-		// Comprobar si el stick está hacia la derecha o izquierda
-		if (axis < -MIN) {
-			_left = true;
-		} else if (axis > MIN) {
-			_right = true;
-		} else {
-			_left = false;
-			_right = false;
-		}
+            // Calcular la posición del eje para regular velocidad
+            if (Math.abs(axis) > MAX || FlxG.keys.anyPressed(["RIGHT"]) || FlxG.keys.anyPressed(["LEFT"])) {
+                Player.SPEED = maxsp;
+            } else if (Math.abs(axis) < MAX) {
+                Player.SPEED = minsp;
+            }  
+        }
 
-		// Calcular la posición del eje para regular velocidad
-		if (Math.abs(axis) < MAX) {
-			Player.SPEED = minsp;
-		} else if (Math.abs(axis) > MAX) {
-			Player.SPEED = maxsp;
-		}
-	}
+		_up = _gamepad.anyJustPressed([FlxGamepadInputID.A]) || FlxG.keys.anyJustPressed(["UP"]);
+		_left = _leftaxis || FlxG.keys.anyPressed(["LEFT"]);
+		_right = _rightaxis || FlxG.keys.anyPressed(["RIGHT"]);
 
-	private function keyControls():Void {
-		_up = FlxG.keys.anyJustPressed(["UP"]);
-		_down = FlxG.keys.anyPressed(["DOWN"]);
-		_left = FlxG.keys.anyPressed(["LEFT"]);
-		_right = FlxG.keys.anyPressed(["RIGHT"]);
-
-		_fscreen = FlxG.keys.anyJustPressed(["F2"]);
-		_mini = FlxG.keys.anyJustPressed(["F3"]);
-	}
-
-	private function getCoin(Coin:FlxObject, Player:FlxObject) {
-		Coin.kill();
+		_fscreen = _gamepad.anyJustPressed([FlxGamepadInputID.BACK]) || FlxG.keys.anyJustPressed(["F"]);
 	}
 }

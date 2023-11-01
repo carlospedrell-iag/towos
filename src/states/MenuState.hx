@@ -1,5 +1,7 @@
 package states;
 
+import flixel.input.gamepad.FlxGamepad;
+import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -30,6 +32,8 @@ class MenuState extends FlxState {
 
 	private var test:Int;
 	private var yes:Bool;
+
+	public static var _gamepad:FlxGamepad;
 
 	override public function create():Void {
 		super.create();
@@ -63,6 +67,8 @@ class MenuState extends FlxState {
 	}
 
 	override public function update(elapsed:Float):Void {
+        var _gamepadstart: Bool = false;
+
 		if (FlxG.keys.anyJustPressed(["Q"])) {
 			FlxG.fullscreen = true;
 		}
@@ -87,7 +93,12 @@ class MenuState extends FlxState {
 			ispeed = 0;
 		}
 
-		if (_button.getBtnDir() == "p" + 1) {
+        _gamepad = FlxG.gamepads.lastActive;
+		if (_gamepad != null) {
+            _gamepadstart =  _gamepad.anyJustPressed([FlxGamepadInputID.START]) || _gamepad.anyJustPressed([FlxGamepadInputID.A]);
+        }
+
+		if ((_button.getBtnDir() == "p" + 1) || _gamepadstart ) {
 			switchToPlayState();
 		}
 

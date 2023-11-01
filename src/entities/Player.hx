@@ -71,6 +71,9 @@ class Player extends FlxSprite {
 		// Reset to 0 when no button is pushed
 		acceleration.x = 0;
 
+        drag.x = SPEED * FRICTION;
+		maxVelocity.x = SPEED;
+
 		animation.play(anim);
 
 		// WHEN TOUCHING FLORR
@@ -168,13 +171,13 @@ class Player extends FlxSprite {
         velocity.y = -10;
 	}
 
-	public function normalize(Coin:FlxObject, Player:FlxObject):Void {
+	public function normalize(arg1:Dynamic, arg2:Dynamic):Void {
 		on_treadmill = false;
 		added_speed = 0;
 		acceleration.y = 1260;
 		drag.y = 350 * 7;
-        drag.x = SPEED * FRICTION;
-		maxVelocity.y = 1160;
+        FRICTION = 7;
+		SPEED = 220;
 	}
 
 	public function speed_up(Coin:FlxObject, Player:FlxObject):Void {
@@ -188,7 +191,7 @@ class Player extends FlxSprite {
 	}
 
 	public function slippery(Coin:FlxObject, Player:FlxObject):Void {
-        drag.x = 300;
+        FRICTION = 1;
 	}
 
 	public function die(Coin:FlxObject, Player:FlxObject):Void {
@@ -198,6 +201,7 @@ class Player extends FlxSprite {
 		if (ss > 0) {
 			ss -= 0.01;
 		}
+        normalize(null, null);
         destroy();
 		FlxG.camera.fade(FlxColor.WHITE, 1, false, FlxG.resetState);
 	}
