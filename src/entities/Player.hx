@@ -1,5 +1,6 @@
 package entities;
 
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -73,6 +74,7 @@ class Player extends FlxSprite {
 		animation.play(anim);
 
 		// WHEN TOUCHING FLORR
+        //FlxG.log.add("floored: " + isTouching(FlxObject.FLOOR) );
 		if (isTouching(FlxObject.FLOOR)) {
 			if (!on_treadmill) {
 				added_speed = 0;
@@ -160,11 +162,18 @@ class Player extends FlxSprite {
 		drag.y = 600;
 	}
 
+	public function zero_gravity():Void {
+		acceleration.y = 0;
+		maxVelocity.y = 500;
+        velocity.y = -10;
+	}
+
 	public function normalize(Coin:FlxObject, Player:FlxObject):Void {
 		on_treadmill = false;
 		added_speed = 0;
 		acceleration.y = 1260;
 		drag.y = 350 * 7;
+        drag.x = SPEED * FRICTION;
 		maxVelocity.y = 1160;
 	}
 
@@ -178,14 +187,18 @@ class Player extends FlxSprite {
 		on_treadmill = true;
 	}
 
+	public function slippery(Coin:FlxObject, Player:FlxObject):Void {
+        drag.x = 300;
+	}
+
 	public function die(Coin:FlxObject, Player:FlxObject):Void {
 		pstate.orbGroup.add(new Orb(x - 8, y + 4));
 
-		FlxG.camera.shake(ss, 1);
+		FlxG.camera.shake(ss, 0.5);
 		if (ss > 0) {
-			ss -= 0.0001;
+			ss -= 0.01;
 		}
-
-		// FlxG.camera.fade(FlxColor.WHITE,3);
+        destroy();
+		FlxG.camera.fade(FlxColor.WHITE, 1, false, FlxG.resetState);
 	}
 }

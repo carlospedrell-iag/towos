@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.util.FlxDirectionFlags;
 import haxe.io.Path;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -98,8 +99,9 @@ class TiledLevel extends TiledMap {
 		}*/
 
 		for (tiledLayer in layers) {
-			if (tiledLayer is TiledObjectLayer) {
-				var tiledObjectLayer:TiledObjectLayer = cast tiledLayer;
+            if (tiledLayer is TiledObjectLayer) {
+                var tiledObjectLayer:TiledObjectLayer = cast tiledLayer;
+                FlxG.log.add("Loaded ObjectLayer " + tiledObjectLayer.name + ", length: " + tiledObjectLayer.objects.length);
 				for (object in tiledObjectLayer.objects) {
 					loadObject(object, tiledObjectLayer, state);
 				}
@@ -115,7 +117,7 @@ class TiledLevel extends TiledMap {
 		if (o.gid != -1)
 			y -= (g.map.getGidOwner(o.gid).tileHeight);
 
-		switch (o.type.toLowerCase()) {
+		switch (g.name.toLowerCase()) {
 			/*case "gravity_base":
 				_gravitybase = new GravityBase(x, y - 18667);
 				state._gravbase.add(_gravitybase); */
@@ -142,7 +144,6 @@ class TiledLevel extends TiledMap {
 
 			case "gravity":
 				var grav = new FlxObject(x, y - y_offset, o.width, o.height);
-
 				state._gravity.add(grav);
 
 			case "antigravity":
@@ -152,29 +153,49 @@ class TiledLevel extends TiledMap {
 
 			case "treadmill":
 				var trdmill = new Treadmill(x, y - y_offset + 24);
+                FlxG.log.add("Treadmill added ");
+
 				state._treadmill.add(trdmill);
 
 			case "treadmill2":
 				var trdmill2 = new Treadmill_right(x, y - y_offset + 24);
+                FlxG.log.add("Treadmill2 added ");
+
 				state._treadmill2.add(trdmill2);
 
-			case "tmill_left":
-				var tleft = new FlxSprite(x, y - y_offset);
+			case "ice":
+				var ice = new FlxSprite(x, y - y_offset );
+                ice.loadGraphic("assets/images/ice.png");
+                ice.immovable = true;
 
-				tleft.loadGraphic("assets/tiled/level.png", true, 32, 32);
-				tleft.animation.add("stop", [51], 0);
-				tleft.animation.play("stop");
+                FlxG.log.add("ice added ");
 
-				state.topobjects.add(tleft);
+				state._ice.add(ice);
 
-			case "tmill_right":
-				var tright = new FlxSprite(x, y - y_offset);
+            case "top_objects":
 
-				tright.loadGraphic("assets/tiled/level.png", true, 32, 32);
-				tright.animation.add("stop", [64], 0);
-				tright.animation.play("stop");
+                if (o.type.toLowerCase() == "tmill_left") {
+                FlxG.log.add("topobject tmill_left added ");
 
-				state.topobjects.add(tright);
+                    var tleft = new FlxSprite(x, y - y_offset);
+
+                    tleft.loadGraphic("assets/tiled/level.png", true, 32, 32);
+                    tleft.animation.add("stop", [51], 0);
+                    tleft.animation.play("stop");
+
+                    state.topobjects.add(tleft);
+
+                } else if (o.type.toLowerCase() == "tmill_right") {
+                FlxG.log.add("topobject tmill_tight added ");
+
+                    var tright = new FlxSprite(x, y - y_offset);
+
+                    tright.loadGraphic("assets/tiled/level.png", true, 32, 32);
+                    tright.animation.add("stop", [64], 0);
+                    tright.animation.play("stop");
+    
+                    state.topobjects.add(tright);
+                }
 		}
 	}
 

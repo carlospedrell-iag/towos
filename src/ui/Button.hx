@@ -10,12 +10,13 @@ import flixel.input.mouse.FlxMouseEventManager;
  */
 class Button extends FlxSprite
 {
-	public static var btnDir:String = "s";
+	private var btnDir:String = "s";
 	private var bc:Int = 0;
 
 	public function new(X:Float=0, Y:Float=0, buttonGraph:String,btnW:Int,btnH:Int,count:Int) 
 	{
 		super(X, Y, buttonGraph);
+        this.btnDir = "s";
 		loadGraphic(buttonGraph, true, btnW, btnH);
 		animation.add("s", [0], 1, false);
 		animation.add("p"+count, [1], 1, false);
@@ -39,4 +40,14 @@ class Button extends FlxSprite
 		var my:Int = FlxG.mouse.screenY;
 		 return ( (mx > x) && (mx < x + width) ) && ( (my > y) && (my < y + height) );
 	}
+
+    public function setBtnDir(dir: String): Void
+    {
+        this.btnDir = dir;
+    }
+
+    public function getBtnDir(): String 
+    {
+        return this.btnDir;
+    }
 }

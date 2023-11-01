@@ -33,12 +33,13 @@ class MenuState extends FlxState {
 
 	override public function create():Void {
 		super.create();
-		switchToPlayState();
+		//switchToPlayState();
 		FlxG.fixedTimestep = true;
 
-		FlxG.mouse.load("assets/images/CURSOR.png");
+		FlxG.mouse.load("assets/images/cursor.png");
 		_background2 = new Background(0, 0);
 		add(_background2);
+        Background.cs = 0.2;
 		Background.towerback.kill();
 		_playercam = new FlxSprite(0, 0);
 		_playercam.makeGraphic(16, 48);
@@ -86,7 +87,7 @@ class MenuState extends FlxState {
 			ispeed = 0;
 		}
 
-		if (Button.btnDir == "p" + 1) {
+		if (_button.getBtnDir() == "p" + 1) {
 			switchToPlayState();
 		}
 

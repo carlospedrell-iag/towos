@@ -16,6 +16,6 @@ class Treadmill_right extends FlxSprite {
 		animation.play("moving");
 		immovable = true;
 		setSize(30, 8);
-		offset.y = 32 - 9;
+		offset.y = 32 - 8;
 	}
 }
